@@ -1,0 +1,75 @@
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+
+
+
+mat-card {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.charts-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.chart-container {
+  height: 400px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.review-item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 5px solid;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+}
+
+.review-comment {
+  font-style: italic;
+  margin: 0 0 0.5rem 0;
+}
+
+.review-rating {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+//.sentiment-positive { border-color: rgb(78, 49, 165) } // Verde
+//.sentiment-negative { border-color:rgb(156, 37, 167); } // Rojo
+//.sentiment-neutral { border-color:rgb(48, 101, 171) } // Gris
+// Clases para los colores de sentimiento
+.sentiment-positive {
+  border-color:rgb(78, 49, 165) ; // Morado principal de 'nightLights'
+}
+.sentiment-negative {
+  border-color: rgb(156, 37, 167); ; // Naranja/Rojo de 'nightLights'
+}
+.sentiment-neutral {
+  border-color: rgb(48, 101, 171); // Azul claro de 'nightLights'
+}
+
+.add-review-card {
+  margin-top: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.full-width {
+  width: 100%;
+}

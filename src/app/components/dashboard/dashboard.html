@@ -1,0 +1,94 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Análisis de Sentimientos</mat-card-title>
+
+    @if (product) {
+    <mat-card-subtitle>
+      <strong>{{ product.name }}</strong></mat-card-subtitle
+    >
+    }
+  </mat-card-header>
+
+  <mat-card-content>
+    @if (chartData.length > 0) {
+    <div class="charts-wrapper">
+      <div class="chart-container">
+        <ngx-charts-bar-vertical
+          scheme="nightLights"
+          [results]="chartData"
+          [gradient]="gradient"
+          [legend]="showLegend"
+          xAxis="true"
+          yAxis="true"
+          xAxisLabel="Sentimiento"
+          yAxisLabel="Cantidad"
+        >
+        </ngx-charts-bar-vertical>
+      </div>
+      <div class="chart-container">
+        <ngx-charts-pie-chart
+          scheme="nightLights"
+          [results]="chartData"
+          [gradient]="gradient"
+          [legend]="showLegend"
+          [labels]="true"
+        >
+        </ngx-charts-pie-chart>
+      </div>
+    </div>
+    } @else {
+    <p>No hay datos de reseñas para mostrar en las gráficas.</p>
+    }
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="reviews-list-card">
+  <mat-card-header>
+    <mat-card-title>Reseñas Individuales</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @for (review of reviews; track review.id) {
+    <div class="review-item" [ngClass]="getSentimentClass(review.sentiment)">
+      <p class="review-comment">"{{ review.userComment }}"</p>
+      <span class="review-rating">Puntuación: {{ review.rating }} / 5</span>
+    </div>
+    } @empty {
+    <p>Aún no hay reseñas para este producto.</p>
+    }
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-stroked-button color="primary" routerLink="/products">Volver a la lista</a>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card class="add-review-card">
+  <mat-card-header>
+    <mat-card-title>Deja tu reseña</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Tu comentario</mat-label>
+        <textarea matInput formControlName="userComment" rows="4"></textarea>
+        @if (reviewForm.get('userComment')?.hasError('required')) {
+        <mat-error>El comentario es obligatorio.</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="rating-field">
+        <mat-label>Puntuación (1-5)</mat-label>
+        <input matInput type="number" formControlName="rating" min="1" max="5" />
+        @if (reviewForm.get('rating')?.hasError('required')) {
+        <mat-error>La puntuación es obligatoria.</mat-error>
+        } @if (reviewForm.get('rating')?.hasError('min') ||
+        reviewForm.get('rating')?.hasError('max')) {
+        <mat-error>La puntuación debe ser entre 1 y 5.</mat-error>
+        }
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="!reviewForm.valid">
+        Enviar Reseña
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

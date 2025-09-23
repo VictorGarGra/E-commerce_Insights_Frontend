@@ -1,0 +1,34 @@
+// Centra la tarjeta y le da un ancho máximo
+mat-card {
+  max-width: 700px;
+  width: 100%;
+  margin: 2rem auto;
+}
+
+// Mejora el alineamiento del encabezado de la tarjeta
+mat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem; // Añade espacio debajo del encabezado
+}
+
+// Estilos mejorados para los ítems de la lista
+mat-list-item {
+  cursor: pointer;
+  border-radius: 8px; // Bordes redondeados
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  // Efecto visual al pasar el ratón
+  &:hover {
+    transform: scale(1.02); // Ligeramente más grande
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); // Sombra sutil
+  }
+}
+
+// Estilos para el nuevo campo de búsqueda
+.search-field {
+  width: 100%;
+  margin-bottom: 1rem; // Espacio entre la búsqueda y la lista
+}

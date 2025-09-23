@@ -25,7 +25,7 @@ export interface Review {
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl = 'https://e-commerce-insights-api.onrender.com/api';
+  private baseUrl = 'environment.apiUrl';
 
   constructor(private http: HttpClient) {}
 

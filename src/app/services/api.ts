@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 // 1. DEFINE Y EXPORTA EL TIPO SENTIMENT AQUÍ
 export type Sentiment = 'POSITIVO' | 'NEGATIVO' | 'NEUTRAL';
@@ -25,7 +26,7 @@ export interface Review {
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl = 'environment.apiUrl';
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 

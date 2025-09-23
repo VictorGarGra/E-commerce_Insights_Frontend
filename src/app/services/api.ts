@@ -25,7 +25,7 @@ export interface Review {
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:8080/api';
+  private baseUrl = 'https://e-commerce-insights-api.onrender.com';
 
   constructor(private http: HttpClient) {}
 

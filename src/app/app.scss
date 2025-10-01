@@ -1,0 +1,17 @@
+/* app.component.scss */
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  /* ESTA LÍNEA ES LA MÁS IMPORTANTE */
+  flex: 1; 
+}
+
+
+mat-icon {
+  font-family: 'Material Symbols Outlined';
+}

@@ -8,9 +8,14 @@
   <mat-card-content>
     <mat-form-field appearance="outline" class="search-field">
       <mat-label>Buscar producto por nombre o categoría...</mat-label>
-      <input matInput type="text" [(ngModel)]="searchTerm" (input)="filterProducts()" />
+      <input matInput type="text" [(ngModel)]="searchTerm" />
     </mat-form-field>
 
+    @if (isLoading) {
+    <div class="spinner-container">
+      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
+    } @else {
     <mat-list role="list">
       @for (product of filteredProducts; track product.id) {
       <mat-list-item [routerLink]="['/dashboard', product.id]">
@@ -19,8 +24,9 @@
         <div matListItemLine>{{ product.category }} - ${{ product.price }}</div>
       </mat-list-item>
       } @empty {
-      <p style="padding: 16px">No se encontraron productos con ese criterio de búsqueda.</p>
+      <p style="padding: 16px">No se encontraron productos.</p>
       }
     </mat-list>
+    }
   </mat-card-content>
 </mat-card>

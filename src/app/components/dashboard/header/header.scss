@@ -1,0 +1,56 @@
+// 1. Importa el módulo de color de SASS para usar sus funciones.
+@use "sass:color";
+
+// --- Variables de Diseño ---
+// Se mantienen tus colores originales.
+$header-background: #2c3e50;
+$header-padding: 1rem 1.5rem;
+$header-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+$brand-text-color: #ecf0f1;
+$brand-font-size: 1.1rem;
+$brand-font-weight: 500;
+
+$icon-color: #3498db;
+$icon-size: 28px;
+$gap-icon-text: 12px;
+
+// --- Estructura Principal ---
+// Usar una clase es más robusto que una etiqueta HTML.
+.header {
+  background-color: $header-background;
+  padding: $header-padding;
+  box-shadow: $header-shadow;
+  display: flex;
+  align-items: center;
+}
+
+// --- Marca/Logo ---
+.header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: $gap-icon-text; // Propiedad moderna para crear espacio.
+  
+  text-decoration: none;
+  color: $brand-text-color;
+  font-size: $brand-font-size;
+  font-weight: $brand-font-weight;
+  
+  transition: color 0.3s ease;
+
+  &:hover {
+    // 2. Se corrige la función obsoleta 'lighten'.
+    // Esta es la sintaxis moderna y recomendada.
+    color: color.adjust($brand-text-color, $lightness: -15%);
+  }
+}
+
+// --- Ícono ---
+.header__brand-icon {
+  color: $icon-color;
+  font-size: $icon-size;
+  
+  // Asegura que el contenedor del ícono tenga el tamaño correcto.
+  width: $icon-size;
+  height: $icon-size;
+}
